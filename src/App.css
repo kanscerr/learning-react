@@ -1,38 +1,87 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.colorize{
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.box{
+  width: 300px;
+  aspect-ratio: 1/1;
+  border: 2px solid black;
+  margin: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.colorize button{
+  cursor:pointer;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text input{
+  width: 20rem;
+  height: 2rem;
+}
+
+.text .showText{
+  width: 23rem;
+  aspect-ratio: 3/1;
+  border: 2px solid black;
+  margin-top: 20px;
+}
+
+.show{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.show .invisibleBox{
+  width: 23rem;
+  aspect-ratio: 3/1;
+  background-color: rgb(76, 210, 76);
+  border: 2px solid black;
+  margin-top: 20px;
+}
+
+.useEffect{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.useEffect .hiddenDiv{
+  margin-top: 30px;
+}
+
+.useEffect .hiddenDiv input{
+  width: 250px;
+  height: 40px;
+  margin-bottom: 30px;
+}
+
+.useEffect .hiddenDiv .showText{
+  width: 300px;
+  height: 300px;
+  background-color: rgb(196, 221, 242);
+}
+
+.githubUser{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userInfo img{
+  margin-top: 50px;
+  width: 200px;
+  aspect-ratio: 1/1;
 }
