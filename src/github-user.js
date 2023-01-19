@@ -6,7 +6,6 @@ const GetGithubUser = () =>{
     const [detail, setDetail] = useState('');
     let [error, setError] = useState('');
     const showDetail = (event) => {
-        try{
             fetch(`https://api.github.com/users/${event.target.value}`)
             .then(data => data.json())
             .then((res) => {
@@ -24,9 +23,6 @@ const GetGithubUser = () =>{
                     setDetail(res);
                 }
             });
-        }catch(error){
-            throw new Error('error');
-        }
     }
     return(
         <div className="githubUser">
@@ -47,27 +43,3 @@ const GetGithubUser = () =>{
 }
 
 export default GetGithubUser;
-
-
-
-// const[details, showDetails] = useState();
-//     const fetchUser = (e) =>{
-//         fetch(`https://api.github.com/users/${e}`)
-//         .then(data => data.json())
-//             .then((res) => {
-//                 if(res.message){
-//                     console.log(res.message);
-//                 }
-//                 else{
-//                     console.log(res);
-//                     showDetails(res.login)
-//                     // showDetails(res.avatar_url);
-//                 }
-//             })
-//             .catch((error) =>{
-//                 console.log(error.message);
-//             })
-//     }
-//     const checkUser = (e) =>{
-//         fetchUser(e);
-//     }
