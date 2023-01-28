@@ -85,3 +85,56 @@
   width: 200px;
   aspect-ratio: 1/1;
 }
+
+body{
+  background: rgb(25, 27, 27);
+}
+
+.stopWatch{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.watch{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 30px;
+  padding: 100px;
+}
+
+.watch .time{
+  width: 200px;
+  aspect-ratio: 1/1;
+  background: black;
+  border-radius: 5%;
+  font-size: 8rem;
+  text-align: center;
+}
+
+.watch .colon{
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: black;
+  margin-top: 70px;
+  border-radius: 5%;
+}
+
+.stopWatch .buttons{
+  display: flex;
+  gap: 60px;
+}
+
+.stopWatch .buttons button{
+  width: 100px;
+  aspect-ratio: 3/1;
+  /*background-color: rgb(23, 23, 23);
+    color: white; */
+  /* pointer-events: none; */
+  /* box-shadow:  1px 1px black */
+}
