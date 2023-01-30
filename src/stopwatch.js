@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import { NewComponent } from './lapComponentStopwatch';
 
 const StopWatch = () =>{
     // let interval;
@@ -6,19 +7,63 @@ const StopWatch = () =>{
     const [sec, setSec] = useState(0);
     const [min, setMin] = useState(0);
     const [hour, setHour] = useState(0);
-    const intervalID = useRef();
+    const [component, setComponent] = useState([]);
 
-    const startMilliClock = () => {
-        intervalID.current = setInterval(()=>{
+    const intervalMilliSec = useRef();
+    const intervalSec = useRef();
+    const intervalMin = useRef();
+    const intervalHour = useRef();
+
+    const startClock = () => {
+        intervalMilliSec.current = setInterval(()=>{
             setMilliSec((prevValue) => {
-                (prevValue>=59) ? prevValue = 0:  prevValue = prevValue+1;
+                (prevValue>=99) ? prevValue = 0:  prevValue++;
+                return prevValue;
+            });
+        }, 1);
+
+        intervalSec.current = setInterval(()=>{
+            setSec((prevValue) => {
+                (prevValue>=59) ? prevValue = 0:  prevValue++;
                 return prevValue;
             });
         }, 1000);
+
+        intervalMin.current = setInterval(() => {
+            setMin((prevValue) => {
+                (prevValue>59) ? prevValue = 0 : prevValue++;
+                return prevValue;
+            })
+        }, 60000);
+
+        intervalHour.current = setInterval(() => {
+            setHour((prevValue) => {
+                (prevValue > 23) ? prevValue = 0 : prevValue++;
+                return prevValue;
+            })
+        }, 1440000);
     }
 
-    const stopMilliClock = () => {
-        clearInterval(intervalID.current);
+    const stopClock = () => {
+        clearInterval(intervalMilliSec.current);
+        clearInterval(intervalSec.current);
+        clearInterval(intervalMin.current);
+        clearInterval(intervalHour.current);
+    }
+
+    const resetClock = () => {
+        clearInterval(intervalMilliSec.current);
+        clearInterval(intervalSec.current);
+        clearInterval(intervalMin.current);
+        clearInterval(intervalHour.current);
+        setHour(0);
+        setMin(0);
+        setSec(0);
+        setMilliSec(0);
+    }
+
+    const noteLap = () => {
+        setComponent([...component, "Sample Components"]) 
     }
 
     return(
@@ -27,18 +72,26 @@ const StopWatch = () =>{
             <div className="watch">
                 <div className="time hour">{ milliSec }</div>
                 <div className="colon"><strong>:</strong></div>
-                <div className="time min">{ milliSec }</div>
+                <div className="time min">{ sec }</div>
                 <div className="colon"><strong>:</strong></div>
-                <div className="time sec">{ milliSec }</div>
+                <div className="time sec">{ min }</div>
                 <div className="colon"><strong>:</strong></div>
-                <div className="time mil-sec">{ milliSec }</div>
+                <div className="time mil-sec">{ hour }</div>
             </div>
             <div className="buttons">
-                <button onClick={ startMilliClock }>Start</button>
-                <button>Lap</button>
-                <button onClick={ stopMilliClock }>Stop</button>
-                <button>Reset</button>
+                <button onClick={ startClock }>Start</button>
+                <button onClick={ noteLap }>Lap</button>
+                <button onClick={ stopClock }>Stop</button>
+                <button onClick={ resetClock }>Reset</button>
             </div>
+            {
+                component.map((item, i) => {
+                    
+                    return (
+                        <NewComponent text={i+1} hour={hour} min={ min } sec={ sec } milliSec={ milliSec }></NewComponent>
+                    )
+                })
+            }
         </div>
     )
 }
