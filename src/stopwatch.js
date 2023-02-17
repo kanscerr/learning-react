@@ -2,7 +2,6 @@ import { useRef, useState } from 'react'
 import { NewComponent } from './lapComponentStopwatch';
 
 const StopWatch = () =>{
-    // let interval;
     const [milliSec, setMilliSec] = useState(0);
     const [sec, setSec] = useState(0);
     const [min, setMin] = useState(0);
@@ -13,6 +12,10 @@ const StopWatch = () =>{
     const intervalSec = useRef();
     const intervalMin = useRef();
     const intervalHour = useRef();
+    const milliSecRef = useRef();
+    const secRef = useRef();
+    const minRef = useRef();
+    const hourRef = useRef();
 
     const startClock = () => {
         intervalMilliSec.current = setInterval(()=>{
@@ -60,10 +63,16 @@ const StopWatch = () =>{
         setMin(0);
         setSec(0);
         setMilliSec(0);
+        setComponent([]);
     }
 
     const noteLap = () => {
-        setComponent([...component, "Sample Components"]) 
+        milliSecRef.current = milliSec;
+        secRef.current = sec;
+        minRef.current = min;
+        hourRef.current = hour;
+        let obj = {milliSecRef, secRef, minRef, hourRef};
+        setComponent([...component, obj]); 
     }
 
     return(
@@ -86,9 +95,8 @@ const StopWatch = () =>{
             </div>
             {
                 component.map((item, i) => {
-                    
                     return (
-                        <NewComponent text={i+1} hour={hour} min={ min } sec={ sec } milliSec={ milliSec }></NewComponent>
+                        <NewComponent key={i} text={i+1} hour={ hourRef.current } min={ minRef.current } sec={ secRef.current } milliSec={ milliSecRef.current }></NewComponent>
                     )
                 })
             }

@@ -101,7 +101,7 @@ body{
 .watch{
   display: flex;
   flex-direction: row-reverse;
-  gap: 30px;
+  gap: 20px;
   padding: 100px;
 }
 
