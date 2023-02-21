@@ -12,10 +12,6 @@ const StopWatch = () =>{
     const intervalSec = useRef();
     const intervalMin = useRef();
     const intervalHour = useRef();
-    const milliSecRef = useRef();
-    const secRef = useRef();
-    const minRef = useRef();
-    const hourRef = useRef();
 
     const startClock = () => {
         intervalMilliSec.current = setInterval(()=>{
@@ -67,11 +63,7 @@ const StopWatch = () =>{
     }
 
     const noteLap = () => {
-        milliSecRef.current = milliSec;
-        secRef.current = sec;
-        minRef.current = min;
-        hourRef.current = hour;
-        let obj = {milliSecRef, secRef, minRef, hourRef};
+        let obj = {milliSec, sec, min, hour};
         setComponent([...component, obj]); 
     }
 
@@ -96,7 +88,7 @@ const StopWatch = () =>{
             {
                 component.map((item, i) => {
                     return (
-                        <NewComponent key={i} text={i+1} hour={ hourRef.current } min={ minRef.current } sec={ secRef.current } milliSec={ milliSecRef.current }></NewComponent>
+                        <NewComponent key={i} text={i+1} hour={ item.hour } min={ item.min } sec={ item.sec } milliSec={ item.milliSec }></NewComponent>
                     )
                 })
             }
