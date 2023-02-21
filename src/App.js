@@ -1,8 +1,8 @@
 // import Colorize from './colorize';
 // import UseEffect from './useEffect';
 // import GetGithubUser from './github-user';
-// import StopWatch from './stopwatch';
-import Memoization from './memoization/parent';
+import StopWatch from './stopwatch/stopwatch';
+// import Memoization from './memoization/parent';
 import './App.css';
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       {/* <Colorize/> */}
       {/* <UseEffect/> */}
       {/* <GetGithubUser/> */}
-      {/* <StopWatch/> */}
-      <Memoization/>
+      <StopWatch/>
+      {/* <Memoization/> */}
     </div>
   )
 }
