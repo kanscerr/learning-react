@@ -1,8 +1,10 @@
-// import Colorize from './colorize';
+// import Colorize from './useState/colorize';
 // import UseEffect from './useEffect';
 // import GetGithubUser from './github-user';
 // import StopWatch from './stopwatch/stopwatch';
-import Memoization from './memoization/parent';
+// import Memoization from './memoization/parent';
+// import Parent from './useCallback/parent';
+import Name from './prop-drilling/name';
 import './App.css';
 
 function App() {
@@ -12,7 +14,9 @@ function App() {
       {/* <UseEffect/> */}
       {/* <GetGithubUser/> */}
       {/* <StopWatch/> */}
-      <Memoization/>
+      {/* <Memoization/> */}
+      {/* <Parent/> */}
+      <Name/>
     </div>
   )
 }
